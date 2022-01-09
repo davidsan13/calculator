@@ -91,10 +91,24 @@ class Calculator {
     }
 }
 
-
-
-
-
+function keyboardInput(e) {
+    const keyName = e.key;
+    const operators = ['+', '-', '*', '/']
+    console.log(keyName)
+    if (!isNaN(keyName) || keyName === '.') {
+        calculator.appendNumber(keyName)
+        calculator.updateDisplay()
+    } else if (operators.includes(keyName)) {
+        calculator.chooseOperation(keyName)
+        calculator.updateDisplay()
+    } else if (keyName === 'Enter') {
+        calculator.compute()
+        calculator.updateDisplay()
+    } else if (keyName === 'Backspace') {
+        calculator.delete()
+        calculator.updateDisplay()
+    }
+}
 
 const numberButtons = document.querySelectorAll('[data-number]')
 const operationButtons = document.querySelectorAll('[data-operation]')
@@ -138,41 +152,3 @@ deleteButton.addEventListener('click', button => {
 
 window.addEventListener('keydown', keyboardInput)
 
-
-// (e) => {
-//     const keyName = e.key;
-//     const operators = ['+', '-', '*', '/']
-//     console.log(keyName)
-//     if (!isNaN(keyName) || keyName === '.') {
-//         calculator.appendNumber(keyName)
-//         calculator.updateDisplay()
-//     } else if (operators.includes(keyName)) {
-//         calculator.chooseOperation(keyName)
-//         calculator.updateDisplay()
-//     } else if (keyName === 'Enter') {
-//         calculator.compute()
-//         calculator.updateDisplay()
-//     } else if (keyName === 'Backspace') {
-//         calculator.delete()
-//         calculator.updateDisplay()
-//     }
-// })
-
-function keyboardInput(e) {
-    const keyName = e.key;
-    const operators = ['+', '-', '*', '/']
-    console.log(keyName)
-    if (!isNaN(keyName) || keyName === '.') {
-        calculator.appendNumber(keyName)
-        calculator.updateDisplay()
-    } else if (operators.includes(keyName)) {
-        calculator.chooseOperation(keyName)
-        calculator.updateDisplay()
-    } else if (keyName === 'Enter') {
-        calculator.compute()
-        calculator.updateDisplay()
-    } else if (keyName === 'Backspace') {
-        calculator.delete()
-        calculator.updateDisplay()
-    }
-}
